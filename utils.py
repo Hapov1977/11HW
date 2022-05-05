@@ -1,5 +1,7 @@
 import json
 
+DATA_FILE_PATH = "candidates.json"
+
 def load_candidates_from_json(path):
     """Возвращает список всех кандидатов"""
     with open(path, "r", encoding="UTF-8") as file:
@@ -7,15 +9,15 @@ def load_candidates_from_json(path):
 
 def get_candidate(candidate_id):
     """Возвращает 1го кандидата по его id"""
-    candidates = load_candidates_from_json("candidates.json")
+    candidates = load_candidates_from_json(DATA_FILE_PATH)
     for candidate in candidates:
         if candidate['id'] == candidate_id:
             return candidate
-        return None
+    return None
 
 def get_candidates_by_name(candidate_name):
     """Возвращает одного кандидата по его имени"""
-    candidates = load_candidates_from_json("candidates.json")
+    candidates = load_candidates_from_json(DATA_FILE_PATH)
     matches = []
     for candidate in candidates:
         if candidate_name.lower() in candidate["name"].lower():
@@ -24,7 +26,7 @@ def get_candidates_by_name(candidate_name):
 
 def get_candidates_by_skill(skill_name):
     """Возвращает кандидатов по навыку"""
-    candidates = load_candidates_from_json("candidates.json")
+    candidates = load_candidates_from_json(DATA_FILE_PATH)
     matches = []
     for candidate in candidates:
         if skill_name.lower() in candidate["skills"].lower().split(", "):

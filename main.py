@@ -26,7 +26,7 @@ def get_candidate_by_name(candidate_name):
     return render_template("search.html", candidates=candidates, candidates_count=len(candidates))
 
 @app.route("/skill/<string:skill_name>")
-def get_candidate_by_skill(skill_name):
+def get_candidates_by_skill(skill_name):
     """Поиск кандидата по навыку"""
     candidates = utils.get_candidates_by_skill(skill_name)
     return render_template("skill.html", candidates=candidates, candidates_count=len(candidates))
